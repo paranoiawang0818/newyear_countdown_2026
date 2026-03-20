@@ -1,204 +1,179 @@
-# 🎆 新年倒计时网站
+# 🎆 New Year Countdown Website 2026
 
-一个精美的跨年倒计时网站，包含心愿墙功能和用户管理系统。
+A beautifully crafted New Year countdown website featuring a wishing wall and a fully integrated user management system for Chinese Newyear in 2026.
 
-## 功能特性
+## ✨ Features
 
-- ⏰ **实时倒计时**: 精确到秒的倒计时
-- 🎉 **新年祝福**: 倒计时结束后显示精美的新年祝福动画
-- 👤 **用户系统**: 注册、登录、JWT 认证
-- 💭 **心愿墙**: 用户可提交心愿，管理员审核后公开
-- 🔐 **权限管理**: 普通用户和管理员权限
-- 📱 **响应式设计**: 完美支持移动端和桌面端
-- 🎨 **精美 UI**: Tailwind CSS + 渐变背景 + 动画效果
+- ⏰ **Real-time Countdown**: Precision countdown timer accurate to the second.
+- 🎉 **New Year Greetings**: Stunning greeting animations triggered upon countdown completion.
+- 👤 **User System**: Full authentication flow including registration, login, and JWT-based authorization.
+- 💭 **Wishing Wall**: Users can submit wishes, which are published publicly after administrator approval.
+- 🔐 **Role-Based Access Control (RBAC)**: Distinct permission levels for regular users and administrators.
+- 📱 **Responsive Design**: Flawless experience across both mobile and desktop devices.
+- 🎨 **Modern UI**: Styled with Tailwind CSS, featuring gradient backgrounds and fluid animations.
 
-## 技术栈
+## 🛠 Tech Stack
 
-### 后端
+### Backend
 - Node.js + Express
 - Prisma ORM
 - PostgreSQL
-- JWT 认证
-- bcryptjs 密码加密
+- JWT Authentication
+- bcryptjs (Password Hashing)
 
-### 前端
+### Frontend
 - React 18
 - Vite
 - React Router 6
 - Axios
 - Tailwind CSS
 
-## 项目结构
+## 📁 Project Structure
 
-```
-├── backend/                 # 后端服务
+├── backend/                  # Backend Service
 │   ├── src/
-│   │   ├── config/         # 配置文件
-│   │   ├── controllers/    # 控制器
-│   │   ├── middleware/     # 中间件
-│   │   ├── routes/         # API 路由
-│   │   └── server.js       # 入口文件
+│   │   ├── config/           # Configuration files
+│   │   ├── controllers/      # Route controllers
+│   │   ├── middleware/       # Custom middleware
+│   │   ├── routes/           # API routes
+│   │   └── server.js         # Entry point
 │   ├── prisma/
-│   │   └── schema.prisma   # 数据库模型
+│   │   └── schema.prisma     # Database schema
 │   └── package.json
 │
-└── frontend/               # 前端应用
+└── frontend/                 # Frontend Application
     ├── src/
-    │   ├── components/     # React 组件
-    │   ├── pages/          # 页面组件
-    │   ├── services/       # API 调用
-    │   ├── contexts/       # Context API
+    │   ├── components/       # Reusable React components
+    │   ├── pages/            # Page components
+    │   ├── services/         # API integration services
+    │   ├── contexts/         # Context API for state management
     │   └── App.jsx
     └── package.json
-```
 
-## 快速开始
+## 🚀 Quick Start
 
-### 前置要求
+### Prerequisites
 
 - Node.js >= 18
-- PostgreSQL 数据库
-- npm 或 yarn
+- PostgreSQL Database
+- npm or yarn
 
-### 后端设置
+### Backend Setup
 
-1. 进入后端目录：
-```bash
+1. Navigate to the backend directory:
 cd backend
-```
 
-2. 安装依赖：
-```bash
+2. Install dependencies:
 npm install
-```
 
-3. 配置环境变量：
-创建 `.env` 文件：
-```env
+3. Configure environment variables:
+Create a `.env` file in the root of the `backend` directory:
 DATABASE_URL="postgresql://user:password@localhost:5432/newyear_countdown?schema=public"
 JWT_SECRET="your-super-secret-jwt-key"
 JWT_EXPIRES_IN="7d"
 PORT=5000
 FRONTEND_URL="http://localhost:5173"
-```
 
-4. 初始化数据库：
-```bash
+4. Initialize the database:
 npx prisma generate
 npx prisma migrate dev --name init
-```
 
-5. 启动开发服务器：
-```bash
+5. Start the development server:
 npm run dev
-```
 
-### 前端设置
+### Frontend Setup
 
-1. 进入前端目录：
-```bash
+1. Navigate to the frontend directory:
 cd frontend
-```
 
-2. 安装依赖：
-```bash
+2. Install dependencies:
 npm install
-```
 
-3. 配置环境变量：
-创建 `.env` 文件：
-```env
+3. Configure environment variables:
+Create a `.env` file in the root of the `frontend` directory:
 VITE_API_URL=http://localhost:5000/api
-```
 
-4. 启动开发服务器：
-```bash
+4. Start the development server:
 npm run dev
-```
 
-5. 访问 `http://localhost:5173`
+5. Open your browser and visit `http://localhost:5173`
 
-## API 接口
+## 🔌 API Endpoints
 
-### 认证接口
+### Authentication
 
-- `POST /api/auth/register` - 用户注册
-- `POST /api/auth/login` - 用户登录
-- `GET /api/auth/me` - 获取当前用户信息
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - User login
+- `GET /api/auth/me` - Fetch current user profile
 
-### 心愿接口
+### Wishes
 
-- `POST /api/wishes` - 创建心愿（需登录）
-- `GET /api/wishes/public` - 获取公开心愿列表
-- `GET /api/wishes/mine` - 获取我的心愿（需登录）
-- `GET /api/wishes/all` - 获取所有心愿（管理员）
-- `PATCH /api/wishes/:id/visibility` - 更新心愿可见性（管理员）
-- `DELETE /api/wishes/:id` - 删除心愿（需登录）
+- `POST /api/wishes` - Create a new wish (Requires Authentication)
+- `GET /api/wishes/public` - Fetch public wishes
+- `GET /api/wishes/mine` - Fetch current user's wishes (Requires Authentication)
+- `GET /api/wishes/all` - Fetch all wishes (Admin only)
+- `PATCH /api/wishes/:id/visibility` - Update wish visibility (Admin only)
+- `DELETE /api/wishes/:id` - Delete a wish (Requires Authentication)
 
-## 数据库模型
+## 🗄 Database Schema
 
-### User 表
-- `id`: 主键
-- `username`: 用户名（唯一）
-- `password`: 加密密码
-- `isAdmin`: 是否管理员
-- `createdAt`: 创建时间
+### User Model
+- `id`: Primary Key
+- `username`: Unique username
+- `password`: Hashed password
+- `isAdmin`: Boolean flag for administrator privileges
+- `createdAt`: Creation timestamp
 
-### Wish 表
-- `id`: 主键
-- `content`: 心愿内容
-- `isVisible`: 是否公开
-- `userId`: 用户 ID（外键）
-- `createdAt`: 创建时间
-- `updatedAt`: 更新时间
+### Wish Model
+- `id`: Primary Key
+- `content`: Text content of the wish
+- `isVisible`: Boolean flag for public visibility
+- `userId`: Foreign Key referencing User ID
+- `createdAt`: Creation timestamp
+- `updatedAt`: Last update timestamp
 
-## 创建管理员账号
+## 👑 Creating an Admin Account
 
-注册后，需要在数据库中手动将用户设置为管理员：
+After registering a standard account, you must manually grant administrator privileges via the database:
 
-```sql
 UPDATE "User" SET "isAdmin" = true WHERE "username" = 'your_username';
-```
 
-或使用 Prisma Studio：
-```bash
+Alternatively, you can use Prisma Studio:
 npx prisma studio
-```
 
-## 部署
+## ☁️ Deployment
 
-### 后端部署 (Railway)
+### Backend Deployment (Railway)
 
-1. 推送代码到 GitHub
-2. 在 Railway 创建新项目
-3. 配置 PostgreSQL 数据库
-4. 设置环境变量
-5. 运行 `npx prisma migrate deploy`
-6. 部署完成
+1. Push your repository to GitHub.
+2. Create a new project on Railway.
+3. Provision a PostgreSQL database plugin.
+4. Configure all required environment variables.
+5. Execute `npx prisma migrate deploy` in your deployment command.
+6. Deploy.
 
-### 前端部署 (Vercel)
+### Frontend Deployment (Vercel)
 
-1. 推送代码到 GitHub
-2. 在 Vercel 导入项目
-3. 配置环境变量 `VITE_API_URL`
-4. 部署完成
+1. Push your repository to GitHub.
+2. Import the project into Vercel.
+3. Set the `VITE_API_URL` environment variable.
+4. Deploy.
 
-## 安全特性
+## 🛡 Security Features
 
-- 密码使用 bcrypt 加密（salt rounds: 10）
-- JWT token 认证
-- SQL 注入防护（Prisma ORM）
-- XSS 防护（React 自动转义）
-- CORS 配置
-- 密码长度验证
-- 心愿内容长度限制
+- Passwords hashed using `bcrypt` (Salt rounds: 10).
+- Secure API endpoints using JSON Web Tokens (JWT).
+- Built-in SQL Injection prevention via Prisma ORM.
+- Cross-Site Scripting (XSS) protection (handled natively by React).
+- CORS configuration to restrict unauthorized origins.
+- Strict password strength and wish content length validation.
 
-## 开发说明
+## 📝 Development Notes
 
-- 倒计时目标日期可在 `CountdownTimer.jsx` 中修改
-- 数据库模型修改后需运行 `npx prisma migrate dev`
-- 管理员权限可手动在数据库中设置
+- The target countdown date can be modified within `CountdownTimer.jsx`.
+- Any modifications to the database models require running `npx prisma migrate dev` to sync the schema.
+- Initial admin privileges must be granted manually at the database level.
 
-## License
+## 📄 License
 
 MIT

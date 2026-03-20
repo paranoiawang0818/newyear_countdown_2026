@@ -28,28 +28,6 @@ A beautifully crafted New Year countdown website featuring a wishing wall and a 
 - Axios
 - Tailwind CSS
 
-## 📁 Project Structure
-
-`├── backend/                  # Backend Service
-│   ├── src/
-│   │   ├── config/           # Configuration files
-│   │   ├── controllers/      # Route controllers
-│   │   ├── middleware/       # Custom middleware
-│   │   ├── routes/           # API routes
-│   │   └── server.js         # Entry point
-│   ├── prisma/
-│   │   └── schema.prisma     # Database schema
-│   └── package.json
-│
-└── frontend/                 # Frontend Application
-    ├── src/
-    │   ├── components/       # Reusable React components
-    │   ├── pages/            # Page components
-    │   ├── services/         # API integration services
-    │   ├── contexts/         # Context API for state management
-    │   └── App.jsx
-    └── package.json`
-
 ## 🚀 Quick Start
 
 ### Prerequisites
